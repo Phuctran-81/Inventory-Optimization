@@ -18,11 +18,11 @@ From that result, i build a formula for establishing reorder point called Season
 <img width="1273" height="82" alt="image" src="https://github.com/user-attachments/assets/4b2ad83f-14cd-4085-a37c-e99b11f8dc27" />
 
 
-- **ROP:**
-- **Baseline 30d:**
-- **Seasonality Index:**
-- **Z:**
-- **MAE:**
+- **ROP:** The forecast Inventory per day.
+- **Baseline 30d:** Average actual sales over the last 30 days
+- **Seasonality Index:** Multiplier calculated by sales of each weekday divided by average week sales
+- **Z:** The distance measured by Standard Deviation from the mean of the distribution.
+- **MAE:** Errors between Actual Sales and Forecast ROP.
 ##### c. Traditional ROP Model
 Moreover, i also calculate the rop based on the formular called traditional ROP model: \
 `ROP = Baseline 30d + Z * (Standard Deviation 30d)`
@@ -31,10 +31,10 @@ Moreover, i also calculate the rop based on the formular called traditional ROP 
 
 
 
-- **ROP:**
-- **Baseline 30d:**
-- **Z:**
-- **Standard Deviation 30d:**
+- **ROP:** The forecast Inventory per day.
+- **Baseline 30d:** Average actual sales over the last 30 days
+- **Z:** The distance measured by Standard Deviation from the mean of the distribution.
+- **Standard Deviation 30d:** The average deviation of values compared to the mean of the distribution.
 ##### d. Promotion ROP model
 **Promotion Lift Factor**
 **Purpose:** To quantify the actual increase in sales volume during promotional events versus the standard 30-day baseline, ensuring future stock levels are optimized for high-traffic days. \
@@ -61,9 +61,9 @@ After calculating Lift factor, i use the following formula for establishing Prom
 - The backtest is implemented in total 26,474 weeks (across 50 items in 10 stores), there are **26,245 overstock weeks** with the **average excess rate at 20.39%** and **229 outstock weeks** with the **average shortage rate at 2.24%**. 
 - The Seasonality-Adjusted ROP model satisfies the **service level of 99%** which is similar to Traditional ROP model while simultaneously **reducing weekly excess inventory by 13%** compared to the traditional ROP method.
 #### b. Promotion ROP model
-- The backtest is implemented in 7,321 promotion date (across 50 items in 10 stores), there are .... overstock date with the average excess rate at ....% and .... outstock date with the average shortage rate at ...%.
+- The backtest is implemented in 7,321 promotion date (across 50 items in 10 stores), there are 6,799 overstock dates with the average excess rate at 14.91% and 522 outstock dates with the average shortage rate at 3.92%.
 ### 4. Recommendations:
 #### a. Adopting the Seasonality-Adjusted ROP model for inventory planning.
 By applying category-specific safety stock levels, we can prioritize availability for high-performance items while minimizing carrying costsfor slower-moving stock.
 #### b. Adopting store-item specific lift factor
-By applying store-item specific lift factor for calculating and adding 10% tactical safety buffer, this can help mitigate the risk of abnormal demand surges, specifically addressing the current 3.92% shortage rate during previous promotions.
+By applying store-item specific lift factor for calculating ROP and adding 10% tactical safety buffer, this can help mitigate the risk of abnormal demand surges, specifically addressing the current 3.92% shortage rate observed during previous promotions.
