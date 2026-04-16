@@ -28,7 +28,7 @@ A tiered strategy in MS SQL Server was used to ensure integrity:
 Data integrity Verification: Used `COUNT(DISTINCT item)` grouped by store to ensure that no store lost product.
 Data consistency Verification:
 - Verifying data duplication by checking the composite key of `date` + `store` + `item` has zero duplicates, ensuring that the dataset will be accurate and not double-counted.
-- Checking data errors to ensure no null values.
+- Checking data errors to ensure no null values and no zero sales. Removed one row have zero sales.
 #### Data enrichment
 New drived columns were created to unlock deeper insight:
 - Temporal Feature: calculating new column such as week_calendar to enable calculate the weekly inventory, extracting weekday_name and weekday_number to enable calculate the seasonality of weekday sales, creating new column dwh_create_date to manage data daily updated.
@@ -45,7 +45,7 @@ Create two new table gold.dim_seasonality_index and gold.dim_abc_category to opt
 - Performed Window_function to calculate the 30 day average sales of each item at each store and the 30 day standard deviation of sales of each item at each store.
 - Flagging the promotion day by detecting days where sales > 30 day average sales + 2 * 30 day standard deviation.
 - Performed JOIN function to get foreign key from gold.dim_category and gold.dim_seasonality_index table.
-- Finally, filter out 30 first days of each item at each store, that rows miss data to calculate the complete 30 day average sales and 30 day standard deviation.
+- Finally, filter out 30 first days of each item at each store (15.000 rows), that rows miss data to calculate the complete 30 day average sales and 30 day standard deviation.
 <img width="1115" height="704" alt="image" src="https://github.com/user-attachments/assets/627239a8-78df-4026-a791-2c7ec1ccb8b0" />
 
 
