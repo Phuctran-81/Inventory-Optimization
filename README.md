@@ -118,10 +118,21 @@ After calculating Lift factor, i used the following formula for establishing Pro
 - **Logic:** Simulated weekly ordering cucles by comparing forecasted ROP against actual weekly demand over the final year of the 5-year dataset.
 ## 5. SHARE:
 #### a. Seasonality-Adjusted ROP model
-- The backtest is implemented in total 26,474 weeks (across 50 items in 10 stores), there are **26,275 overstock weeks** with the **average excess rate at 21.77%** and **199 outstock weeks** with the **average shortage rate at 2.07%**. 
+- The backtest is implemented in total 26,474 weeks (across 50 items in 10 stores), there are **26,275 overstock weeks** with the **average excess rate at 21.77%** and **199 outstock weeks** with the **average shortage rate at 2.07%**.
+<img width="1607" height="751" alt="image" src="https://github.com/user-attachments/assets/4f88cf6c-e9ac-443e-bb55-9706c2f677e2" />
+The seasonality-adjusted ROP model
 - The Seasonality-Adjusted ROP model satisfies the **service level of 99%** which is similar to Traditional ROP model while simultaneously **reducing weekly excess inventory by 2.82%** compared to the traditional ROP method.
+<img width="1602" height="745" alt="image" src="https://github.com/user-attachments/assets/2965561c-cbf9-4674-8ea1-ebaf283f0c37" />
+The traditional ROP model
+
 #### b. Promotion ROP model
 - The backtest is implemented in 7,321 promotion date (across 50 items in 10 stores), there are 6,799 overstock dates with the average excess rate at 14.91% and 522 outstock dates with the average shortage rate at 3.92%.
+<img width="1604" height="743" alt="image" src="https://github.com/user-attachments/assets/aa3f1532-742a-4db7-bea9-8473b42380b9" />
+- After backtesting Promotion ROP i decide to plus 10% Promotion ROP to cover abnormal demand surge dates. The results show that the number of outstock dates decrease significantly from 522 outstock date of old model to 48 outstock dates. The shortage rate also drop to 2.93%, however the excess rate higher than olde model approximately 10%.
+<img width="1601" height="745" alt="image" src="https://github.com/user-attachments/assets/d2f04fa8-faa3-44dd-a2ba-3016ff8772b2" />
+
+
+
 ## 4. ACT:
 #### a. Adopting the Seasonality-Adjusted ROP model for inventory planning.
 By applying category-specific safety stock levels, we can prioritize availability for high-performance items while minimizing carrying costs for slower-moving stock.
