@@ -50,16 +50,31 @@ Create two new table gold.dim_seasonality_index and gold.dim_abc_category to opt
 
 
 ## 4. ANALYZE:
-To ensure the ROP was responsive to real-word volatility, the analysis focused on isolating  distinct demand signals:
+To ensure the ROP was responsive to real-word volatility, the analysis focused on four signals:
 - Systemic Seasonality: Calculated unique Seasonality Indices for 500 store-item combinations.
   + Identified a predictable 16.17% demand surge on Sundays, which was previously causing stock-outs in traditional models.
 - ABC Segmentation:
   + Applied Pareto analysis to 5 years of revenue data, categorizing 500 store-item combinations into tiered priority to optimize capital allocation.
-- Heuristic Event Detection:
-  + Implemented an outlier detection algorithm (Z > 2.0) to reconstruct missing promotion metadata.
-  + Quatified a Promotion Lift Factor to automatically scale reorder points during high-traffic events, reducing shortage rate to 3.92%.
-- Performance Validation (Backtesting):
-  + Finding: The seasonality-adjusted model maintained a 99% service level while achieving a 2.82% reduction in excess inventory compared to the baseline method.
+- Heuristic Promotion Detection:
+  + Engineered a statistical outlier detection model (Baseline + 2 σ) to identify and "flag" historical promotion dates where metadata was missing, presenting demand spikes from skewing the standard seasonality index.
+- Performance Validation (Backtesting): 
+  + **Methodology:** Simulated ordering cycles (weekly for normal date and daily for promotion date) by comparing forecasted ROP against actual weekly demand over the final year of the 5-year dataset.
+  + **Findings:** \
+    **Normal Dates:** The seasonality-adjusted model maintained a 99% service level while achieving a 2.82% reduction in excess inventory compared to the baseline method. \
+    **Promotion Dates:** The promotion ROP model maintained a 92% service level with the average excess rate at 14.91% and the average shortage rate at 3.92%. 
+### Build ROP Model
+**a. Seasonality-Adjusted Model**
+- The formular for calculating Inventory ROP: 
+<img width="1550" height="81" alt="image" src="https://github.com/user-attachments/assets/697ce8dc-80bd-43a3-9d98-ad49dc6b54cb" />
+
+**b. Traditional Model**
+- The formular for calculating Inventory ROP: 
+<img width="1559" height="91" alt="image" src="https://github.com/user-attachments/assets/04763714-c377-403d-ac6e-2bc781ceafe3" />
+
+**c. Promotion ROP**
+- The formular for calculating Inventory ROP: 
+<img width="1582" height="89" alt="image" src="https://github.com/user-attachments/assets/86e1b3ba-5de0-4cf5-b3f1-dff6e51de36e" />
+
 ## 5. SHARE:
 #### a. Seasonality-Adjusted ROP model
 - The backtest is implemented in total 26,474 weeks (across 50 items in 10 stores), there are **26,275 overstock weeks** with the **average excess rate at 21.77%** and **199 outstock weeks** with the **average shortage rate at 2.07%**.
@@ -72,6 +87,7 @@ The traditional ROP model
 #### b. Promotion ROP model
 - The backtest is implemented in 7,321 promotion date (across 50 items in 10 stores), there are 6,799 overstock dates with the average excess rate at 14.91% and 522 outstock dates with the average shortage rate at 3.92%.
 <img width="1604" height="743" alt="image" src="https://github.com/user-attachments/assets/aa3f1532-742a-4db7-bea9-8473b42380b9" />
+
 - After backtesting Promotion ROP i decide to plus 10% Promotion ROP to cover abnormal demand surge dates. The results show that the number of outstock dates decrease significantly from 522 outstock date of old model to 48 outstock dates. The shortage rate also drop to 2.93%, however the excess rate higher than olde model approximately 10%.
 <img width="1601" height="745" alt="image" src="https://github.com/user-attachments/assets/d2f04fa8-faa3-44dd-a2ba-3016ff8772b2" />
 
