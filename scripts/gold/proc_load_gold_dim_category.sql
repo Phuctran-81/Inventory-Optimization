@@ -26,7 +26,7 @@ FROM (
 	SELECT
 		store_id,
 		item_id,
-		SUM (CAST (total_sales AS FLOAT)/ (SELECT SUM(sales) FROM silver.train2)) OVER (ORDER BY total_sales DESC) AS running_pct
+		SUM (CAST (total_sales AS FLOAT)/ (SELECT SUM(sales) FROM silver.train)) OVER (ORDER BY total_sales DESC) AS running_pct
 	FROM (
 	-- This Subquery calculates the total sales of each item at each store
 		SELECT
