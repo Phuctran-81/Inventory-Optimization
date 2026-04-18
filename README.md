@@ -10,7 +10,7 @@
 -----------------------------
 ## II. ANALYTICAL FRAMEWORK: A 6-STAGE DEEP DIVE
 ## 1. Ask
-The goal of this project is to build a  model establishing inventory reorder point. The model will balance between ensuring the product availability and minizing carrying cost.
+The primary goal was to engineer a scalable replenishment engine to solve the "Overstock vs. Stock-out" paradox. The project targeted a 97%+ success level while minimizing capital lock-up in slow-moving stock.
 ## 2. Prepare
 ### Data Sourcing:
 The raw dataset was originally sourced from Kaggle with **913,000 rows** (Store Item Demand Forecasting Challenge). For this analysis, the data has been ingested into a SQL Server environment. This setup allows for the high-performance processing required to handle the 5-year history of daily sales across 10 stores and 50 items.
