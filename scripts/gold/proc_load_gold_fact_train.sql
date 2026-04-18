@@ -64,4 +64,4 @@ LEFT JOIN gold.dim_seasonality_index b
 		ON a.store = b.store_id AND a.item = b.item_id AND a.weekday_number = b.weekday_number
 LEFT JOIN gold.dim_category c
 		ON a.store = c.store_id AND a.item = c.item_id
-WHERE date > DATEADD (DAY, 31, (SELECT MIN(date) FROM cte_baseline_sd_30d))
+WHERE date > DATEADD (DAY, 29, (SELECT MIN(date) FROM cte_baseline_sd_30d))
