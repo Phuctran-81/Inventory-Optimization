@@ -52,11 +52,11 @@ Using **Star Schema Model** to optimize the performance when updating new data.
 ## 4. ANALYZE:
 To ensure the ROP was responsive to real-word volatility, the analysis focused on four signals:
 - Systemic Seasonality: Calculated unique Seasonality Indices for 500 store-item combinations.
-  + Because sales of this dataset is seasonal ( the 16.7% sunday surge and 19.45% Monday lull compared to the average week sales ), calculating store-item specific indices of each weekday to estimate the demand more accuracy.
+  + Because sales of this dataset is seasonal ( the 16.7% sunday surge and 19.45% Monday lull compared to the average week sales), calculating store-item specific indices of each weekday to estimate the demand more accuracy.
 - ABC Segmentation:
   + Applied Pareto analysis to 5 years of revenue data, categorizing 500 store-item combinations into tiered priority to optimize capital allocation.
 - Heuristic Promotion Detection:
-  + Engineered a statistical outlier detection model (Baseline + 2 σ) to identify and "flag" historical promotion dates where metadata was missing, presenting demand spikes from skewing the standard seasonality index.
+  + Engineered a statistical outlier detection model (Baseline + 2 σ) to identify and "flag" historical promotion dates where metadata was missing, preventing demand spikes from skewing the standard seasonality index.
 - Performance Validation (Backtesting): 
   + **Methodology:** Simulated ordering cycles (weekly for normal date and daily for promotion date) by comparing forecasted ROP against actual demand over the final year of the 5-year dataset.
   + **Findings:** \
