@@ -34,7 +34,7 @@ New drived columns were created to unlock deeper insight:
 - Temporal Feature: calculating new column such as week_calendar to enable calculate the weekly inventory, extracting weekday_name and weekday_number to enable calculate the seasonality of weekday sales, creating new column dwh_create_date to manage data daily updated.
 - Primary Key: create primary_key to manage data.
 ### B. Silver to Gold
-Create two new table gold.dim_seasonality_index and gold.dim_abc_category to optimize the performance when updating new data.
+Using **Star Schema Model** to optimize the performance when updating new data.
 #### a. gold.dim_seasonality_index table *([CLick to jump SQL Script](https://github.com/Phuctran-81/Reorder-Point-Setup-Model/blob/main/scripts/gold/proc_load_gold_dim_seasonality_index.sql))*
 - Calculating the average of the ratio between weekday sales and average week sales to get seasonality index of each weekday.
 - Performed ROW_NUMBER () to create primary key for this table.
