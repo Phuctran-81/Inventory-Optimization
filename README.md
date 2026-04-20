@@ -1,12 +1,12 @@
-# Reorder Point Setup Model
+# Inventory Optimization 
 ## I. OVERALL
 ## 1. Executive Summary
-**Objective:** Engineered an automated Inventory Reorder Point (ROP) system for 500 unique store-item combinations to solve the "Overstock vs. Stock-out" paradox. Developed a **Seasonally-Adjusted Engine** that maintains a **99% Service Level** while reducing excess inventory by **2.8% compared** to traditional rolling-average models.
+**Objective:** Engineered an automated **Inventory Requirement Model** to optimize **Target Stock Levels (TSL)** for 500 unique store-item combinations. Based on the assumption of ordering once every 7 days, the model resolves the "Overstock vs. Stock-out" paradox maintaining a 99% Service Level while maintaining the excess rate at 20%.
 ## 2. Key Project Insights
-- **High-Precision Seasonality:** Identified the differencerate in sales between weekdays and the weekly average, which traditional model miss, allowing for more accurate inventory calculations.
+- **High-Precision Seasonality:** Identified significant variance between weekday demand and weekly averages that traditional model overlook. By incorporating these fluctuations, the model generates highly accurate, day-specifi demand forecasts.
 - **Automated Promotion Detection:** Developed a statistical outlier detection model (Basline 30day + 2 standard deviation) to flag missing promotion dates and calculate a **Promotion Lift Factor**, reducing shortage risks during high-traffic events.
-- **Strategic Capital Allocation:** Implemented ABC Revenue Classification to priortize Class A items (80% of revenue), ensuring 90% daily availability for top-performers while minimizing the "carrying cost" of slow-moving stock.
-- **Validated Reliability:** Conducted a rigorous 12-month backtest to prove model efficiency.
+- **Strategic Capital Allocation:** Implemented ABC Revenue Classification to priortize Class A items driving 80% of total revenue, ensuring 90% daily availability for top-performers while minimizing the "carrying cost" of slow-moving (Class C) stock.
+- **Validated Reliability:** Conducted a rigorous 12-month backtest to prove model stability and financial impact before proposing operational deployment.
 -----------------------------
 ## II. ANALYTICAL FRAMEWORK: A 6-STAGE DEEP DIVE
 ## 1. Ask
