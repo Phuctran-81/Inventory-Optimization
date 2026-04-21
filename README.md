@@ -113,4 +113,4 @@ To ensure the Target Stock Level (TSL) was responsive to real-word volatility, t
   + [train](https://github.com/Phuctran-81/Reorder-Point-Setup-Model/releases/tag/V1.0.0) is dataset used to build the model.
   + [test](https://github.com/Phuctran-81/Reorder-Point-Setup-Model/releases/tag/V1.0.0) is dataset contained the final year data and ROP using for testing the success level.
 - Database: SQL Server Management Studio 21.
-- Data visualization: Access the dashboard at [Tableau Public](https://public.tableau.com/views/Book2_17765843140690/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
+- Data visualization: Access the dashboard at [Tableau Public](https://public.tableau.com/views/Book2_17767519135300/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
